@@ -39,6 +39,7 @@ class ChatCompletionsForm(BaseModel):
     messages: Messages
     model: str
     provider: Optional[str] = None
+    tone: Optional[str] = ""
     stream: bool = False
     temperature: Optional[float] = None
     max_tokens: Optional[int] = None

@@ -36,6 +36,7 @@ class BaseProvider(ABC):
         model: str,
         messages: Messages,
         stream: bool,
+        tone: str,
         **kwargs
     ) -> CreateResult:
         """
@@ -58,6 +59,7 @@ class BaseProvider(ABC):
         cls,
         model: str,
         messages: Messages,
+        tone: str,
         **kwargs
     ) -> str:
         """

@@ -31,6 +31,7 @@ class IterListProvider(BaseRetryProvider):
         self,
         model: str,
         messages: Messages,
+        tone: str = "",
         stream: bool = False,
         **kwargs,
     ) -> CreateResult:
@@ -53,7 +54,7 @@ class IterListProvider(BaseRetryProvider):
             try:
                 if debug.logging:
                     print(f"Using {provider.__name__} provider")
-                for token in provider.create_completion(model, messages, stream, **kwargs):
+                for token in provider.create_completion(model, messages, stream, tone, **kwargs):
                     yield token
                     started = True
                 if started:

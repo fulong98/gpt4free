@@ -137,6 +137,7 @@ class AsyncProvider(AbstractProvider):
         cls,
         model: str,
         messages: Messages,
+        tone: str = "",
         stream: bool = False,
         **kwargs
     ) -> CreateResult:
@@ -191,6 +192,7 @@ class AsyncGeneratorProvider(AsyncProvider):
         cls,
         model: str,
         messages: Messages,
+        tone: str = "",
         stream: bool = True,
         **kwargs
     ) -> CreateResult:

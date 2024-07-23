@@ -22,6 +22,7 @@ class Raycast(AbstractProvider):
         messages: Messages,
         stream: bool,
         proxy: str = None,
+        tone: str = "",
         **kwargs,
     ) -> CreateResult:
         auth = kwargs.get('auth')

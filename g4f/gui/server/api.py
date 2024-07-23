@@ -135,6 +135,7 @@ class Api():
         model = json_data.get('model') or models.default
         provider = json_data.get('provider')
         messages = json_data['messages']
+        tone = json_data['tone']
         api_key = json_data.get("api_key")
         if api_key is not None:
             kwargs["api_key"] = api_key
@@ -153,6 +154,7 @@ class Api():
             "model": model,
             "provider": provider,
             "messages": messages,
+            "tone": tone,
             "stream": True,
             "ignore_stream": True,
             "return_conversation": True,

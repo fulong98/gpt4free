@@ -14,6 +14,7 @@ const microLabel        = document.querySelector(".micro-label");
 const inputCount        = document.getElementById("input-count").querySelector(".text");
 const providerSelect    = document.getElementById("provider");
 const modelSelect       = document.getElementById("model");
+const toneSelect        = document.getElementById("tone");
 const modelProvider     = document.getElementById("model2");
 const systemPrompt      = document.getElementById("systemPrompt");
 const settings          = document.querySelector(".settings");
@@ -443,6 +444,7 @@ const ask_gpt = async (message_index = -1) => {
         const input = imageInput && imageInput.files.length > 0 ? imageInput : cameraInput;
         const file = input && input.files.length > 0 ? input.files[0] : null;
         const provider = providerSelect.options[providerSelect.selectedIndex].value;
+        const toner = toneSelect.options[toneSelect.selectedIndex].value;
         const auto_continue = document.getElementById("auto_continue")?.checked;
         if (file && !provider)
             provider = "Bing";
@@ -458,6 +460,7 @@ const ask_gpt = async (message_index = -1) => {
             model: get_selected_model(),
             web_search: document.getElementById("switch").checked,
             provider: provider,
+            tone: toner,
             messages: messages,
             auto_continue: auto_continue,
             api_key: api_key

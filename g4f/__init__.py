@@ -16,6 +16,7 @@ class ChatCompletion:
     def create(model    : Union[Model, str],
                messages : Messages,
                provider : Union[ProviderType, str, None] = None,
+               tone     : str = "",
                stream   : bool = False,
                auth     : Union[str, None] = None,
                ignored  : list[str] = None, 
@@ -64,13 +65,17 @@ class ChatCompletion:
         if patch_provider:
             provider = patch_provider(provider)
 
-        result = provider.create_completion(model, messages, stream, **kwargs)
+        if tone!="":
+            print("tone", tone)
+
+        result = provider.create_completion(model, messages, stream, tone, **kwargs)
         return result if stream else ''.join([str(chunk) for chunk in result])
 
     @staticmethod
     def create_async(model    : Union[Model, str],
                      messages : Messages,
                      provider : Union[ProviderType, str, None] = None,
+                     tone     : str = "",
                      stream   : bool = False,
                      ignored  : list[str] = None,
                      ignore_working: bool = False,
@@ -104,7 +109,7 @@ class ChatCompletion:
         if patch_provider:
             provider = patch_provider(provider)
 
-        return provider.create_async(model, messages, **kwargs)
+        return provider.create_async(model, messages,tone, **kwargs)
 
 class Completion:
     @staticmethod

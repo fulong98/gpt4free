@@ -81,6 +81,7 @@ class Completions():
         messages: Messages,
         model: str,
         provider: ProviderType = None,
+        tone: str = "",
         stream: bool = False,
         proxy: str = None,
         response_format: dict = None,
@@ -103,8 +104,8 @@ class Completions():
         
         stop = [stop] if isinstance(stop, str) else stop
         response = provider.create_completion(
-            model, messages,
-            stream=stream,            
+            model, messages, 
+            stream=stream, tone=tone,            
             **filter_none(
                 proxy=self.client.get_proxy() if proxy is None else proxy,
                 max_tokens=max_tokens,
